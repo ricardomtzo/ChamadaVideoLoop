@@ -16,10 +16,18 @@ let server = null;
 const listen = () => {
   const app = express.init();
 
-  server = spdy
+  /*server = spdy
     .createServer(config.sslOptions, app)
-    .listen(config.port, config.ip);
-  show.debug(`Listening at https://${config.host}:${config.port}`);
+    .listen(config.port, config.ip);*/
+
+  server = http.createServer(app);
+
+  server.listen(port, () => {
+    console.log(`Servidor rodando na porta ${port}`);
+  });
+
+  //show.debug(`Listening at https://${config.host}:${config.port}`);
+
   const io = new Server(server, {});
   // socket.listen(server);
   initSocketServer(io);
