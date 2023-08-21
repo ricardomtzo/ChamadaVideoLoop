@@ -5,6 +5,7 @@ const spdy = require("spdy");
 const { initSocketServer, store } = require("../lib");
 const { Server } = require("socket.io");
 const routes = require("../../routes");
+const http = require('http');
 
 let server = null;
 
@@ -21,7 +22,7 @@ const listen = () => {
     .listen(config.port, config.ip);*/
 
   server = http.createServer(app);
-
+  const port = process.env.PORT || 3000;
   server.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
   });
