@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chamada de Vídeo</title>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
@@ -10,7 +13,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
     <script
-      src="https://cdn.socket.io/4.5.0/socket.io.min.js"
+      src="https://cdn.socket.io/4.7.2/socket.io.min.js"
       integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k"
       crossorigin="anonymous"
     ></script>
@@ -50,6 +53,7 @@
       <video
         id="localVideo"
         autoplay
+        playsinline
         muted
         style="
           width: 20%;
@@ -62,6 +66,7 @@
       <video
         id="remoteVideo"
         autoplay
+        playsinline
         style="
           width: 60%;
           height: auto;

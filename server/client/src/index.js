@@ -49,18 +49,22 @@ window.addEventListener("load", async function () {
   });
 
   cignal.on("localStream", (localStream) => {
-    logger.debug("got local stream");
-    localVideo.srcObject = localStream;
-    // document.getElementById("myName").hidden = true;
     document.getElementById("otherElements").hidden = false;
 
     document.getElementById("clientLinkHelperText").hidden = true;
+
     if (!roomId) {
       showAllUsers.innerHTML = `Other user in cignal room(${cignal.id}): None`;
       document.getElementById("clientLink").style.display = "flex";
       const clientLink = `${url}?roomId=${cignal.id}`;
       document.getElementById("clientLinkToCopy").innerHTML = clientLink;
     }
+    
+    logger.debug("got local stream");
+    localVideo.srcObject = localStream;
+    // document.getElementById("myName").hidden = true;
+    
+    
   });
 
   cignal.on("peerJoined", (name) => {
