@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 let basePath = path.join(__dirname, "../../../");
 //const env = process.env.NODE_ENV;
-const env = 'development'
+const env = 'production'
 // const env = 'development'
 // if (env === 'production') {
 //  basePath = './'
