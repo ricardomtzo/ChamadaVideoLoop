@@ -17,7 +17,7 @@ const listen = () => {
   const app = express.init();
 
   server = spdy
-    .createServer(config.sslOptions, app)
+    .createServer(/*config.sslOptions*/{}, app)
     .listen(config.port, config.ip);
   show.debug(`Listening at https://${config.host}:${config.port}`);
   const io = new Server(server, {});
