@@ -2,19 +2,20 @@ import { Cignal } from "./lib/Cignal.js";
 import { getUrlParam } from "./utils/getUrlVars.js";
 import { Logger } from "./lib/Logger.js";
 const logger = new Logger("index");
-let peerNamePrompt = window.prompt("What's your name?", "Peer");
+let peerNamePrompt = window.prompt("Qual seu nome?", "seu nome");
 const peerId = undefined;
-const peerName = peerNamePrompt === null ? "Peer" : peerNamePrompt;
+const peerName = peerNamePrompt === null ? "Maria" : peerNamePrompt;
 const roomId = getUrlParam("roomId", null);
 const url = `https://${window.location.host}/`;
 const mediaConstraints = {
   audio: true,
-  video: {
+  /*video: {
     width: { min: 320, ideal: 1280, max: 1280 },
     height: { min: 240, ideal: 720, max: 720 },
     aspectRatio: 1.777777778,
     frameRate: { min: 15, max: 30 },
-  },
+  },*/
+  video: false
 };
 let cignal;
 
@@ -41,7 +42,7 @@ window.addEventListener("load", async function () {
     mediaConstraints,
   });
   logger.debug("cignal is:%O", cignal);
-  usernameShow.innerHTML = `Hello,  ${cignal.data.myDisplayName}`;
+  usernameShow.innerHTML = `Olá,  ${cignal.data.myDisplayName}`;
   cignal.on("remoteStream", (remoteStream) => {
     logger.debug("got remote stream");
     remoteVideo.srcObject = remoteStream;
@@ -54,7 +55,7 @@ window.addEventListener("load", async function () {
     document.getElementById("clientLinkHelperText").hidden = true;
 
     if (!roomId) {
-      showAllUsers.innerHTML = `Other user in cignal room(${cignal.id}): None`;
+      showAllUsers.innerHTML = `Outro usuário na sala(${cignal.id}): `;
       document.getElementById("clientLink").style.display = "flex";
       const clientLink = `${url}?roomId=${cignal.id}`;
       document.getElementById("clientLinkToCopy").innerHTML = clientLink;
@@ -68,7 +69,7 @@ window.addEventListener("load", async function () {
   });
 
   cignal.on("peerJoined", (name) => {
-    showAllUsers.innerHTML = `Other user in cignal room(${cignal.id}): ${name}`;
+    showAllUsers.innerHTML = `Outro usuário na sala(${cignal.id}): ${name}`;
   });
 
   cignal.on("offerReceived", () => {
