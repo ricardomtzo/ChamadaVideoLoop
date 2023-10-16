@@ -9,13 +9,13 @@ const roomId = getUrlParam("roomId", null);
 const url = `https://${window.location.host}/`;
 const mediaConstraints = {
   audio: true,
-  /*video: {
+  video: {
     width: { min: 320, ideal: 1280, max: 1280 },
     height: { min: 240, ideal: 720, max: 720 },
     aspectRatio: 1.777777778,
     frameRate: { min: 15, max: 30 },
-  },*/
-  video: false
+  },
+  //video: false
 };
 let cignal;
 
